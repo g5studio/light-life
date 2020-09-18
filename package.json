@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --port 6931",
+    "build": "ng build --prod --base-href https://g5studio.github.io/light-life/",
+    "deploy": "ngh --dir dist/g5-studio-light-life",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -28,9 +29,10 @@
     "@angular/cli": "~9.1.0",
     "@angular/compiler-cli": "~9.1.0",
     "@angular/language-service": "~9.1.0",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "bootstrap": "^4.5.2",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
