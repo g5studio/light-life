@@ -1,6 +1,90 @@
+@import "variables";
+@import "mixins";
+
 .Landing {
     height: 100%;
     background-image: url("../../../../../assets/images/landing_bg.png");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: map-get($map: $layout-level, $key: "cover");
+        background-color: rgba($black, 0.5);
+    }
+    &__Container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: map-get($map: $layout-level, $key: "canvus");
+        backdrop-filter: blur(3px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 5rem;
+        }
+    }
+
+    &__Buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        app-button {
+            &:not(:last-child) {
+                margin-right: 1.5rem;
+            }
+        }
+    }
+
+    &__Logo {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+    }
+}
+
+@media screen and (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
+    .Landing {
+        &__Logo {
+            position: absolute;
+            bottom: auto;
+            right: auto;
+            top: 3rem;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        &__Container {
+            padding: 0 2.5rem;
+            align-items: flex-start;
+            h1 {
+                width: 100%;
+                text-align: center;
+                @include font-size("xxl");
+                letter-spacing: 2px;
+                margin-bottom: 3rem;
+            }
+        }
+        &__Buttons {
+            flex-direction: column;
+            width: 100%;
+            app-button {
+                width: 100%;
+                &:not(:last-child) {
+                    margin-right: 0;
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+    }
 }

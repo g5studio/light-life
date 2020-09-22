@@ -1,0 +1,15 @@
+@import "variables";
+@import "mixins";
+
+.Button {
+    color: $white;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    @include border($white);
+    letter-spacing: 1px;
+    &:hover {
+        background-color: $white;
+        color: $midnight;
+        transition: 0.5s;
+    }
+}
