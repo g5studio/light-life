@@ -7,9 +7,16 @@
     padding: 0.5rem 1rem;
     @include border($white);
     letter-spacing: 1px;
-    &:hover {
+    &:not(:disabled):hover {
         background-color: $white;
         color: $midnight;
-        transition: 0.5s;
+        transition: 0.3s;
+        @include box-shadow($midnight);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        color: $gray;
+        border-color: $gray;
     }
 }

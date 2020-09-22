@@ -26,6 +26,18 @@ export class AuthService {
     return !!sessionStorage.getItem('uid');
   }
 
+  public login({ email, password }): Promise<void> {
+    console.log(email, password)
+    return this.$fbAuth.auth.signInWithEmailAndPassword(email, password).then(
+      res => {
+        console.log(res);
+      }
+    ).catch(
+      error => {
+        console.log(error.code);
+      }
+    );
+  }
   public logout() {
     this.$fbAuth.auth.signOut();
   }

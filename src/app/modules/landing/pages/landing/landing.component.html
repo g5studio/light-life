@@ -5,10 +5,10 @@
         </span>
         <h1>LIGHT LIFE</h1>
         <div class="Landing__Buttons">
-            <app-button>
+            <app-button (onclick)='this.router.navigate(["/landing/login"])'>
                 Sign In
             </app-button>
-            <app-button>
+            <app-button (onclick)='this.router.navigate(["/landing/sign-up"])'>
                 Sign Up
             </app-button>
         </div>

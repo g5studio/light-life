@@ -1,0 +1,98 @@
+@import "variables";
+@import "mixins";
+
+.Login {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    img {
+        margin-top: 5rem;
+        width: 45rem;
+    }
+    &__Container {
+        width: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        h1 {
+            width: 100%;
+            @include font-size("xxxl");
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        app-button {
+            padding-left: 2rem;
+            width: 10rem;
+        }
+    }
+
+    &__Field {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__Input {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        label {
+            margin: 0;
+        }
+        em {
+            @include font-size("xl");
+            margin-right: 0.5rem;
+        }
+    }
+
+    &__Logo {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+    }
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, "md")) {
+    .Login {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 10rem 1rem 0 1rem;
+        img {
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        &__Container {
+            h1 {
+                @include font-size("xxl");
+                margin-bottom: 1.5rem;
+            }
+            width: 100%;
+            app-button {
+                padding-left: 0rem;
+                width: 100%;
+            }
+        }
+
+        &__Field {
+            margin-bottom: 1rem;
+        }
+
+        &__Logo {
+            position: absolute;
+            bottom: auto;
+            right: auto;
+            top: 3rem;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    }
+}
