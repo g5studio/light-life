@@ -1,0 +1,23 @@
+@import "variables";
+@import "animations";
+
+.Loading {
+    position: relative;
+    padding: 2rem;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-right: 3px solid $aqua-green;
+        border-bottom: 3px solid $aqua-green;
+        border-radius: 100%;
+        animation: loading 2s linear infinite;
+        height: 7rem;
+        width: 7rem;
+    }
+    img {
+        width: 3rem;
+        // height: 3rem;
+    }
+}
