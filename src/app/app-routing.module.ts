@@ -9,7 +9,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
-      { path: 'landing', loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule) }
+      { path: 'landing', loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule) },
+      { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) }
     ]
   }
 ];

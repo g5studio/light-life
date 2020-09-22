@@ -27,3 +27,8 @@
     </div>
     <img src="assets/images/sign-up.png" alt="">
 </div>
+
+<app-message-popup [alert]='true' [time]='3' [central]='true' *ngIf='this.$overlay.popupMsg$ | async as popup'
+    (onclose)='this.$overlay.hidePopup()'>
+    {{popup}}
+</app-message-popup>

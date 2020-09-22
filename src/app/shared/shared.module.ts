@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './components/button/button.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessagePopupComponent } from './components/message-popup/message-popup.component';
 
 
 
 @NgModule({
-  declarations: [ButtonComponent, LogoComponent],
+  declarations: [
+    ButtonComponent,
+    LogoComponent,
+    MessagePopupComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -16,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     ButtonComponent,
     LogoComponent,
+    MessagePopupComponent,
     ReactiveFormsModule,
     FormsModule
   ]

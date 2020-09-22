@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { OverlayService } from '@services/overlay.service';
 import { AuthService } from 'src/app/auth/auth.service';
 
 
@@ -12,7 +13,8 @@ export class SingUpComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private $auth: AuthService
+    private $auth: AuthService,
+    public $overlay: OverlayService
   ) { }
 
   public form: FormGroup;
@@ -21,8 +23,8 @@ export class SingUpComponent implements OnInit {
     this.inital();
   }
 
-  public login() {
-    this.$auth.login(this.form.getRawValue());
+  public signUp() {
+    this.$auth.signUp(this.form.getRawValue());
   }
 
   public getErrorMessage(field: string, error: string) {
