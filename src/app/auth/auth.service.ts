@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { OverlayService } from '@services/overlay.service';
+import { EAuthError } from '@utilities/enums/auth.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,8 @@ export class AuthService {
     private $overlay: OverlayService,
     private router: Router
   ) {
-    if (this.isLogin) {
-      this.router.navigate([sessionStorage.getItem('redirect') || 'user/home']);
-    }
     this.$fbAuth.authState.subscribe(
       user => {
-        console.log(user)
         if (user) {
           sessionStorage.setItem('uid', user.uid);
           this.router.navigate([sessionStorage.getItem('redirect') || 'user/home']);
@@ -44,6 +41,7 @@ export class AuthService {
     ).catch(
       error => {
         this.$overlay.finishLoading();
+        this.$overlay.togglePopup(this.getErrorMsg(error.code));
         console.log(error.code);
       }
     );
@@ -71,7 +69,10 @@ export class AuthService {
   }
 
   private getErrorMsg(code: string) {
-    return code.includes('user-not-found') ? 'User not found, please sign up first.' : 'Unknow error';
+    return code.includes('user-not-found') ? EAuthError.UserNotFound :
+      code.includes('wrong-password') ? EAuthError.PasswordIncorrect :
+        code.includes('email-already-in-use') ? EAuthError.UserHasExisted :
+          EAuthError.UnknowError;
   }
 
 }

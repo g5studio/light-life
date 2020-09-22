@@ -38,7 +38,7 @@
             </small>
         </div>
         <app-button
-            [disabled]="form.get('password').invalid || form.get('email').invalid  || form.get('confirm').invalid"
+            [disabled]="form.hasError('notEqual') || form.get('password').invalid || form.get('email').invalid  || form.get('confirm').invalid"
             (onclick)='this.signUp()'>
             Create
         </app-button>

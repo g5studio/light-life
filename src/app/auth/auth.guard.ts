@@ -1,7 +1,6 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +22,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   private isAuth(url: string) {
-    console.log(url);
     if (!url.includes('landing')) {
       sessionStorage.setItem('redirect', url);
     }

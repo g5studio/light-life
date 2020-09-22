@@ -28,7 +28,7 @@ export class SingUpComponent implements OnInit {
   }
 
   public getErrorMessage(field: string, error: string) {
-    if (this.form.hasError('notEqual')) {
+    if (field === 'confirm' && this.form.hasError('notEqual')) {
       return this.form.getError('notEqual').message;
     } else if (this.form.get(field).hasError(error)) {
       return this.form.get(field).getError(error).message;
@@ -54,9 +54,9 @@ export class SingUpComponent implements OnInit {
   }
 
   private validatePassword(control: AbstractControl): ValidationErrors {
-    return control.value.length > 0
+    return control.value.length > 5
       ? null
-      : { invalid: { message: 'Field is required.' } };
+      : { invalid: { message: 'Password must contain at least 6 characters.' } };
   }
   private validateConfirmPassword(group: FormGroup): ValidationErrors {
     const ref = group.get('password').value;
