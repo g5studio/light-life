@@ -1,1 +1,47 @@
-<p>sing-up works!</p>
+<div class="Singup" [formGroup]="this.form">
+    <div class="Singup__Container">
+        <div class="Singup__Logo">
+            <app-logo></app-logo>
+        </div>
+        <h1>Sign Up</h1>
+        <div class="Singup__Field">
+            <div class="Singup__Input">
+                <label for=""><em class="icon-mail"></em></label>
+                <input placeholder="email" [class.is-invalid]="form.get('email').invalid && form.get('email').touched"
+                    formControlName="email" type="text" class="form-control" />
+            </div>
+            <small *ngIf="form.get('email').invalid && form.get('email').touched">
+                <span class="icon-alert_2 pr-1"></span>
+                <span>{{this.getErrorMessage("email", "invalid")}}</span>
+            </small>
+        </div>
+        <div class="Singup__Field">
+            <div class="Singup__Input">
+                <label for=""><em class="icon-unlock"></em></label>
+                <input [class.is-invalid]="form.get('password').invalid && form.get('password').touched"
+                    placeholder="password" formControlName="password" type="password" class="form-control" />
+            </div>
+            <small *ngIf="form.get('password').invalid && form.get('password').touched">
+                <span class="icon-alert_2 pr-1"></span>
+                <span>{{this.getErrorMessage("password", "invalid")}}</span>
+            </small>
+        </div>
+        <div class="Singup__Field">
+            <div class="Singup__Input">
+                <label for=""><em class="icon-unlock"></em></label>
+                <input [class.is-invalid]="form.get('confirm').invalid && form.get('confirm').touched"
+                    placeholder="confirm password" formControlName="confirm" type="password" class="form-control" />
+            </div>
+            <small *ngIf="(form.get('confirm').invalid || form.hasError('notEqual')) && form.get('confirm').touched">
+                <span class="icon-alert_2 pr-1"></span>
+                <span>{{this.getErrorMessage("confirm", "invalid")}}</span>
+            </small>
+        </div>
+        <app-button
+            [disabled]="form.get('password').invalid || form.get('email').invalid  || form.get('confirm').invalid"
+            (onclick)='this.login()'>
+            Create
+        </app-button>
+    </div>
+    <img src="assets/images/sign-up.png" alt="">
+</div>
