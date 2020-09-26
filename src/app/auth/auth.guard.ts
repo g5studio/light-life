@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   private isAuth(url: string) {
     if (!url.includes('landing')) {
-      sessionStorage.setItem('redirect', url);
+      sessionStorage.setItem('redirect', url.replace('/', ''));
     }
     if (!this.$auth.isLogin && !url.includes('landing')) {
       this.router.navigate(['landing']);

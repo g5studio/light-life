@@ -36,13 +36,11 @@ export class AuthService {
     return this.$fbAuth.auth.createUserWithEmailAndPassword(email, password).then(
       res => {
         this.$overlay.finishLoading();
-        console.log(res);
       }
     ).catch(
       error => {
         this.$overlay.finishLoading();
         this.$overlay.togglePopup(this.getErrorMsg(error.code));
-        console.log(error.code);
       }
     );
   }
@@ -57,7 +55,6 @@ export class AuthService {
       error => {
         this.$overlay.finishLoading();
         this.$overlay.togglePopup(this.getErrorMsg(error.code));
-        console.log(error.code);
       }
     );
   }

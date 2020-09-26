@@ -1,0 +1,118 @@
+@import "variables";
+@import "mixins";
+
+.Home {
+    height: 100%;
+    background-image: url("../../../../../assets/images/home_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: map-get($map: $layout-level, $key: "cover");
+        background-color: rgba($black, 0.6);
+    }
+    &__Container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: map-get($map: $layout-level, $key: "canvus");
+        backdrop-filter: blur(3px);
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+    }
+
+    &__Menu {
+        padding: 2rem 5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__MenuItem {
+        flex: 1;
+        h1 {
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            text-align: center;
+            border-bottom: 1px solid $white;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: $light-gray;
+            padding: 0 0.5rem;
+        }
+
+        div {
+            margin: 0 1.5rem;
+        }
+    }
+
+    &__Logo {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+    }
+}
+
+@media screen and (max-width: map-get($map: $grid-breakpoints, $key: "xl")) {
+    .Home {
+        &__Menu {
+            flex-direction: column;
+        }
+
+        &__MenuItem {
+            margin-bottom: 3rem;
+            h1 {
+                width: 100%;
+                @include font-size("xxl");
+                letter-spacing: 2px;
+                border-bottom: none;
+            }
+
+            p {
+                @include font-size("md");
+                padding-bottom: 1.5rem;
+                text-align: center;
+            }
+
+            div {
+                padding-bottom: 1.5rem;
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
+    .Home {
+        &__Logo {
+            position: absolute;
+            bottom: auto;
+            right: auto;
+            top: 3rem;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        &__Menu {
+            padding: 10rem 0 0 0;
+        }
+
+        &__Container {
+            padding: 0 2.5rem;
+            align-items: flex-start;
+        }
+    }
+}
