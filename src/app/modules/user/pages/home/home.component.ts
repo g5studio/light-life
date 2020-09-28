@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OverlayService } from '@services/overlay.service';
+import { EModalType } from '@utilities/enums/overlay.enum';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -9,10 +11,15 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    public $auth: AuthService
+    public $auth: AuthService,
+    private $overlay: OverlayService
   ) { }
 
   ngOnInit(): void {
+  }
+
+  public toggleProjectQuestionModal() {
+    this.$overlay.toggleModal(EModalType.ProjectQuestion);
   }
 
 }

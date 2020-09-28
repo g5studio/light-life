@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'mixins';
+
+.ProjectQuestion {
+    padding: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include g5-card();
+}

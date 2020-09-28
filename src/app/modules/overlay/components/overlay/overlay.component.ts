@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { OverlayService } from '@services/overlay.service';
+import { EModalType } from '@utilities/enums/overlay.enum';
+import { env } from 'process';
 
 @Component({
   selector: 'app-overlay',
@@ -8,11 +10,24 @@ import { OverlayService } from '@services/overlay.service';
 })
 export class OverlayComponent implements OnInit {
 
+  @ViewChild('tModal') modal: ElementRef;
+
   constructor(
     public $overlay: OverlayService
   ) { }
 
+  get modalType(): typeof EModalType {
+    return EModalType;
+  }
+
   ngOnInit(): void {
+  }
+
+  public closeModal(event: Event) {
+    event.stopPropagation();
+    if(!this.modal.nativeElement.contains(event.target)) {
+      this.$overlay.closeModal();
+    }
   }
 
 }
