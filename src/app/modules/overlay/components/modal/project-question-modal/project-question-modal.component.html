@@ -1,3 +1,10 @@
 <div class="ProjectQuestion">
-    questions
+    <div class="ProjectQuestion__Container">
+        <span (click) = 'this.$overlay.closeModal()' class="ProjectQuestion__Close">
+            <em class="icon-close"></em>
+        </span>
+        <div class="ProjectQuestion__Forms" [formGroup]="this.form">
+
+        </div>
+    </div>
 </div>

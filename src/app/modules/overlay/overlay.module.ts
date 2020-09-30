@@ -4,6 +4,7 @@ import { OverlayComponent } from './components/overlay/overlay.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ProjectQuestionModalComponent } from './components/modal/project-question-modal/project-question-modal.component';
 import { SharedModule } from '@shared/shared.module';
+import { TdeeModalComponent } from './components/modal/tdee-modal/tdee-modal.component';
 
 
 
@@ -11,7 +12,8 @@ import { SharedModule } from '@shared/shared.module';
   declarations: [
     OverlayComponent,
     LoadingComponent,
-    ProjectQuestionModalComponent
+    ProjectQuestionModalComponent,
+    TdeeModalComponent
   ],
   imports: [
     CommonModule,

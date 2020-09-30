@@ -5,6 +5,7 @@
   <div class="Overlay__Container" (click)='this.closeModal($event)' *ngIf='this.$overlay.modal$ | async as modal'>
     <div #tModal [ngSwitch]='modal'>
       <app-project-question-modal *ngSwitchCase='this.modalType.ProjectQuestion'></app-project-question-modal>
+      <app-tdee-modal *ngSwitchCase='this.modalType.Tdee'></app-tdee-modal>
     </div>
     <div>
 </div>

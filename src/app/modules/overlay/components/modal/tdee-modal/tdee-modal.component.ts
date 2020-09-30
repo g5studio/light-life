@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OverlayService } from '@services/overlay.service';
 
 @Component({
-  selector: 'app-project-question-modal',
-  templateUrl: './project-question-modal.component.html',
-  styleUrls: ['./project-question-modal.component.scss']
+  selector: 'app-tdee-modal',
+  templateUrl: './tdee-modal.component.html',
+  styleUrls: ['./tdee-modal.component.scss']
 })
-export class ProjectQuestionModalComponent implements OnInit {
+export class TdeeModalComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,

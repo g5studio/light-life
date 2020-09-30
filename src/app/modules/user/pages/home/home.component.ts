@@ -22,4 +22,8 @@ export class HomeComponent implements OnInit {
     this.$overlay.toggleModal(EModalType.ProjectQuestion);
   }
 
+  public toggleTDEEModal() {
+    this.$overlay.toggleModal(EModalType.Tdee);
+  }
+
 }

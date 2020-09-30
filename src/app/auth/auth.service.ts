@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { OverlayService } from '@services/overlay.service';
 import { EAuthError } from '@utilities/enums/auth.enum';
+import { UserIdleService } from 'angular-user-idle';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,14 @@ export class AuthService {
   constructor(
     private $fbAuth: AngularFireAuth,
     private $overlay: OverlayService,
-    private router: Router
+    private router: Router,
+    private $idle: UserIdleService,
   ) {
     this.$fbAuth.authState.subscribe(
       user => {
         if (user) {
           sessionStorage.setItem('uid', user.uid);
-          this.router.navigate([sessionStorage.getItem('redirect') || 'user/home']);
+          this.loginCallback();
         }
         else {
           this.logout();
@@ -63,6 +65,13 @@ export class AuthService {
     sessionStorage.removeItem('uid');
     this.$fbAuth.auth.signOut();
     this.router.navigate(['landing']);
+  }
+
+  private loginCallback() {
+    this.$idle.startWatching()
+    this.$idle.onTimerStart().subscribe(_ => console.log('user inactivity!, will logout in 5 min'));
+    this.$idle.onTimeout().subscribe(_ => this.logout());
+    this.router.navigate([sessionStorage.getItem('redirect') || 'user/home']);
   }
 
   private getErrorMsg(code: string) {

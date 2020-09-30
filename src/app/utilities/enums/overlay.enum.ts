@@ -1,4 +1,5 @@
 export enum EModalType {
     Close,
-    ProjectQuestion
+    ProjectQuestion,
+    Tdee
 }

@@ -23,7 +23,7 @@ export class OverlayService {
   private modal: Subject<EModalType> = new Subject();
   public modal$ = this.modal.asObservable().pipe(
     startWith(EModalType.Close),
-    tap(_ => console.log(_))
+    // tap(_ => console.log(_))
   )
 
   public loading() {
