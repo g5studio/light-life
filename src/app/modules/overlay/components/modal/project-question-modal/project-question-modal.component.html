@@ -1,10 +1,76 @@
 <div class="ProjectQuestion">
-    <div class="ProjectQuestion__Container">
-        <span (click) = 'this.$overlay.closeModal()' class="ProjectQuestion__Close">
-            <em class="icon-close"></em>
-        </span>
-        <div class="ProjectQuestion__Forms" [formGroup]="this.form">
-
-        </div>
+  <div class="ProjectQuestion__Container">
+    <span (click)='this.$overlay.closeModal()' class="ProjectQuestion__Close">
+      <em class="icon-close"></em>
+    </span>
+    <h1>FITNESS PROJECT</h1>
+    <div class="ProjectQuestion__Forms" [formGroup]="this.form">
+      <ul>
+        <li>
+          <input placeholder="Age" [class.is-invalid]="form.get('age').invalid && form.get('age').touched"
+            formControlName="age" type="number" class="form-control" />
+          <small *ngIf="form.get('age').invalid && form.get('age').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <input placeholder="Weight" [class.is-invalid]="form.get('weight').invalid && form.get('weight').touched"
+            formControlName="weight" type="number" class="form-control" />
+          <small *ngIf="form.get('weight').invalid && form.get('weight').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <app-dropdown (onclose)="this.setField('gender', $event)"
+            [alert]="this.form.get('gender').invalid && form.get('gender').touched"
+            [default]='this.form.get("gender").value' [options]='this.genders'>
+            Gender
+          </app-dropdown>
+          <small *ngIf="this.form.get('gender').invalid && form.get('gender').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <app-dropdown (onclose)="this.setField('experience', $event)"
+            [alert]="this.form.get('experience').invalid && form.get('experience').touched"
+            [default]='this.form.get("experience").value' [options]='this.experiences'>
+            Training Experience
+          </app-dropdown>
+          <small *ngIf="this.form.get('experience').invalid && form.get('experience').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <app-dropdown (onclose)="this.setField('level', $event)"
+            [alert]="this.form.get('level').invalid && form.get('level').touched"
+            [default]='this.form.get("level").value' [options]='this.levels'>
+            Training Level
+          </app-dropdown>
+          <small *ngIf="this.form.get('level').invalid && form.get('level').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <app-dropdown (onclose)="this.setField('vegetarian', $event)"
+            [alert]="this.form.get('vegetarian').invalid && form.get('vegetarian').touched"
+            [default]='this.form.get("vegetarian").invalid ? "" : this.form.get("vegetarian").value ? "Yes" : "No"'
+            [options]='["Yes", "No"]'>
+            Vegetarian
+          </app-dropdown>
+          <small *ngIf="this.form.get('vegetarian').invalid && form.get('vegetarian').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+      </ul>
     </div>
+    <div class="ProjectQuestion__Submit">
+      <app-button [disabled]='this.form.invalid' [dark]='"true"' (onclick)='this.submit()'>SUBMIT</app-button>
+    </div>
+  </div>
 </div>

@@ -69,7 +69,6 @@ export class AuthService {
 
   private loginCallback() {
     this.$idle.startWatching()
-    this.$idle.onTimerStart().subscribe(_ => console.log('user inactivity!, will logout in 5 min'));
     this.$idle.onTimeout().subscribe(_ => this.logout());
     this.router.navigate([sessionStorage.getItem('redirect') || 'user/home']);
   }

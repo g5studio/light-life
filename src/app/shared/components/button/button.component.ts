@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
 
   @Output() onclick: EventEmitter<void> = new EventEmitter();
   @Input() disabled = false;
+  @Input() dark = false;
   constructor() { }
 
   ngOnInit(): void {

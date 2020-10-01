@@ -1,0 +1,12 @@
+<div #tMenu [class.alert-hint]='this.alert' class="Dropdown">
+  <button (click)='this.expand($event, tMenu)'>
+    <ng-content *ngIf='!this.default'></ng-content>
+    <p *ngIf='this.default'>{{this.default}}</p>
+    <em class="icon-down1"></em>
+  </button>
+  <div *ngIf='this.isOpen' class="Dropdown__Menu">
+    <ul>
+      <li *ngFor='let option of this.options' (click)='this.select($event, option)'>{{option}}</li>
+    </ul>
+  </div>
+</div>

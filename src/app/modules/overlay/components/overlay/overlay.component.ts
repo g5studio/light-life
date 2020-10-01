@@ -24,7 +24,6 @@ export class OverlayComponent implements OnInit {
   }
 
   public closeModal(event: Event) {
-    event.stopPropagation();
     if(!this.modal.nativeElement.contains(event.target)) {
       this.$overlay.closeModal();
     }

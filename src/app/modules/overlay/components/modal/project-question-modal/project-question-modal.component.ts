@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OverlayService } from '@services/overlay.service';
+import { Gender, TrainExperience, TrainLevel } from '@utilities/enums/user.enum';
 
 @Component({
   selector: 'app-project-question-modal',
@@ -14,18 +15,39 @@ export class ProjectQuestionModalComponent implements OnInit {
     public $overlay: OverlayService
   ) { }
 
+  public form: FormGroup;
+  public genders = [Gender.Male, Gender.Female];
+  public experiences = [TrainExperience.Junior, TrainExperience.Senior];
+  public levels = [TrainLevel.Level1, TrainLevel.Level2]
+
+
   ngOnInit(): void {
     this.inital();
   }
 
-  public form: FormGroup;
+  public setField(field: string, value?: any) {
+    const FIELD = this.form.get(field);
+    FIELD.markAsTouched();
+    if (field === 'vegetarian') {
+      FIELD.setValue(value === 'Yes');
+    } else {
+      FIELD.setValue(value || '');
+    }
+  }
+
+  public submit() {
+    console.log(this.form.getRawValue());
+  }
 
   private inital() {
     this.form = this.formBuilder.group(
       {
-        email: ['', [Validators.required]],
-        password: ['', [Validators.required]],
-        confirm: ['', [Validators.required]],
+        age: ['', [Validators.required]],
+        weight: ['', [Validators.required]],
+        gender: ['', [Validators.required]],
+        experience: ['', [Validators.required]],
+        level: ['', [Validators.required]],
+        vegetarian: ['', [Validators.required]]
       }
     )
   }

@@ -1,0 +1,59 @@
+@import 'variables';
+@import 'mixins';
+
+.Dropdown {
+    button {
+        padding: 0 1rem;
+        @include border($link-water);
+        height: calc(1em + 1rem + 2px);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color: #636c72;
+        em {
+            color: $link-water;
+        } 
+        &:focus {
+            border-color: $bright-blue;
+            em {
+                color: $midnight;
+            }
+        }
+
+        p {
+            color: $midnight;
+        }
+    }
+
+    &__Menu {
+        @include border($link-water);
+        margin-top: 0.5rem;
+        padding: 0.25rem 0rem;
+        ul {
+            li {
+                padding: 0 1rem;
+                color: $link-water;
+                cursor: pointer;
+                &:not(:last-child) {
+                    border-bottom: 1px solid $link-water;
+                    padding-bottom: 0.25rem;
+                }
+
+                &:not(:first-child) {
+                    padding-top: 0.25rem;
+                }
+
+                &:hover {
+                    color: $midnight;
+                }
+            }
+        }
+    }
+}
+
+.alert-hint {
+    button {
+        border-color: $rose;
+    }
+}

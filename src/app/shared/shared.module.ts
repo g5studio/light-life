@@ -4,6 +4,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessagePopupComponent } from './components/message-popup/message-popup.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 
 
@@ -11,7 +12,8 @@ import { MessagePopupComponent } from './components/message-popup/message-popup.
   declarations: [
     ButtonComponent,
     LogoComponent,
-    MessagePopupComponent
+    MessagePopupComponent,
+    DropdownComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { MessagePopupComponent } from './components/message-popup/message-popup.
     LogoComponent,
     MessagePopupComponent,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DropdownComponent
   ]
 })
 export class SharedModule { }
