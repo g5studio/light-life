@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OverlayService } from '@services/overlay.service';
 import { ProjectService } from '@services/project.service';
 import { UserService } from '@services/user.service';
@@ -40,7 +41,7 @@ export class ProjectQuestionModalComponent implements OnInit {
   }
 
   public submit() {
-    this.$user.setUser({ profile: this.form.getRawValue() });
+    this.$user.setUserProfile(this.form.getRawValue());
   }
 
   private inital() {

@@ -16,7 +16,7 @@ export class User {
         }
     }
 
-    public setProfile(profile) {
+    public setProfile(profile: IUserProfile) {
         this.profile = { ...this.profile, ...profile };
     }
 }
