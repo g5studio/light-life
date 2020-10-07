@@ -27,18 +27,16 @@ export class HomeComponent implements OnInit {
     this.$user.user$.pipe(
       take(1)
     ).subscribe(
-      user => {
-        if (user.profile.age) {
-          this.router.navigate(['/user/project']);
-        } else {
-          this.$overlay.toggleModal(EModalType.ProjectQuestion);
-        }
-      }
+      user => user.isProjectInfoCompleted ? this.router.navigate(['/user/project']) : this.$overlay.toggleModal(EModalType.ProjectQuestion)
     );
   }
 
   public toggleTDEEModal() {
-    this.$overlay.toggleModal(EModalType.Tdee);
+    this.$user.user$.pipe(
+      take(1)
+    ).subscribe(
+      user => user.isTDEEInfoCompleted ? this.router.navigate(['/user/tdee']) : this.$overlay.toggleModal(EModalType.Tdee)
+    )
   }
 
 }

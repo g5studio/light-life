@@ -12,3 +12,11 @@ export enum TrainLevel {
     Level1 = 'Beginner',
     Level2 = 'Advanced'
 }
+
+export enum ActivityLevel {
+    Secentary = 'secentary',
+    Lightly = 'Lightly',
+    Moderately = 'Moderately',
+    Very = 'Very Active',
+    Extremely = 'Extremely'
+}

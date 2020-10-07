@@ -1,4 +1,4 @@
-import { Gender, TrainExperience, TrainLevel } from '@utilities/enums/user.enum';
+import { ActivityLevel, Gender, TrainExperience, TrainLevel } from '@utilities/enums/user.enum';
 
 export interface IUserProfile {
     gender?: Gender,
@@ -6,5 +6,6 @@ export interface IUserProfile {
     weight?: number,
     experience?: TrainExperience,
     level?: TrainLevel,
-    vegetarian?: boolean
+    vegetarian?: boolean,
+    activityLevel?: ActivityLevel
 }

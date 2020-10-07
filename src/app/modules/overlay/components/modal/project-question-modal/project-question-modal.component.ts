@@ -5,6 +5,7 @@ import { OverlayService } from '@services/overlay.service';
 import { ProjectService } from '@services/project.service';
 import { UserService } from '@services/user.service';
 import { Gender, TrainExperience, TrainLevel } from '@utilities/enums/user.enum';
+import { filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-question-modal',
@@ -28,20 +29,36 @@ export class ProjectQuestionModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.inital();
+    this.$user.user$.pipe(
+      take(1),
+      filter(user => !!user.profile)
+    ).subscribe(
+      user => {
+        this.form.get('age').setValue(user.profile.age);
+        this.form.get('weight').setValue(user.profile.weight);
+        this.form.get('gender').setValue(user.profile.gender);
+        this.form.get('experience').setValue(user.profile.experience);
+        this.form.get('level').setValue(user.profile.level);
+        if (user.profile.vegetarian !== undefined) {
+          this.form.get('vegetarian').setValue(user.profile.vegetarian);
+        }
+      }
+    );
   }
 
   public setField(field: string, value?: any) {
     const FIELD = this.form.get(field);
     FIELD.markAsTouched();
     if (field === 'vegetarian') {
-      FIELD.setValue(value === 'Yes');
+      FIELD.setValue(value ? value === 'Yes' : '');
+
     } else {
       FIELD.setValue(value || '');
     }
   }
 
   public submit() {
-    this.$user.setUserProfile(this.form.getRawValue());
+    this.$user.setUserProfile(this.form.getRawValue(), 'user/project');
   }
 
   private inital() {

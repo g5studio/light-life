@@ -27,7 +27,7 @@ export class UserService {
     this.user.next(user);
   }
 
-  public setUserProfile(profile: IUserProfile) {
+  public setUserProfile(profile: IUserProfile, redirect?: string) {
     this.$overlay.loading();
     this.user$.pipe(
       take(1)
@@ -39,7 +39,9 @@ export class UserService {
             user.setProfile(profile);
             this.user.next(user);
             this.$overlay.closeModal();
-            this.router.navigate(['user/project']);
+            if(redirect) {
+              this.router.navigate([redirect]);
+            }
           }
         )
       }

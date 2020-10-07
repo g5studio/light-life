@@ -1,10 +1,53 @@
 <div class="TDEE">
-    <div class="TDEE__Container">
-        <span (click) = 'this.$overlay.closeModal()' class="TDEE__Close">
-            <em class="icon-close"></em>
-        </span>
-        <div class="TDEE__Forms" [formGroup]="this.form">
-
-        </div>
+  <div class="TDEE__Container">
+    <span (click)='this.$overlay.closeModal()' class="TDEE__Close">
+      <em class="icon-close"></em>
+    </span>
+    <h1>CALCULATE MY TDEE </h1>
+    <div class="TDEE__Forms" [formGroup]="this.form">
+      <ul>
+        <li>
+          <input placeholder="Age" [class.is-invalid]="form.get('age').invalid && form.get('age').touched"
+            formControlName="age" type="number" class="form-control" />
+          <small *ngIf="form.get('age').invalid && form.get('age').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <input placeholder="Weight" [class.is-invalid]="form.get('weight').invalid && form.get('weight').touched"
+            formControlName="weight" type="number" class="form-control" />
+          <small *ngIf="form.get('weight').invalid && form.get('weight').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <app-dropdown (onclose)="this.setField('gender', $event)"
+            [alert]="this.form.get('gender').invalid && form.get('gender').touched"
+            [default]='this.form.get("gender").value' [options]='this.genders'>
+            Gender
+          </app-dropdown>
+          <small *ngIf="this.form.get('gender').invalid && form.get('gender').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <app-dropdown (onclose)="this.setField('activityLevel', $event)"
+            [alert]="this.form.get('activityLevel').invalid && form.get('activityLevel').touched"
+            [default]='this.form.get("activityLevel").value' [options]='this.activityLevel'>
+            Activity Level Pre Week
+          </app-dropdown>
+          <small *ngIf="this.form.get('activityLevel').invalid && form.get('activityLevel').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+      </ul>
     </div>
+    <div class="ProjectQuestion__Submit">
+      <app-button [disabled]='this.form.invalid' [dark]='"true"' (onclick)='this.submit()'>SUBMIT</app-button>
+    </div>
+  </div>
 </div>
