@@ -15,7 +15,15 @@
           </small>
         </li>
         <li>
-          <input placeholder="Weight" [class.is-invalid]="form.get('weight').invalid && form.get('weight').touched"
+          <input placeholder="Height (cm)" [class.is-invalid]="form.get('height').invalid && form.get('height').touched"
+            formControlName="height" type="number" class="form-control" />
+          <small *ngIf="form.get('height').invalid && form.get('height').touched">
+            <span class="icon-alert_2 pr-1"></span>
+            <span>field is required</span>
+          </small>
+        </li>
+        <li>
+          <input placeholder="Weight (kg)" [class.is-invalid]="form.get('weight').invalid && form.get('weight').touched"
             formControlName="weight" type="number" class="form-control" />
           <small *ngIf="form.get('weight').invalid && form.get('weight').touched">
             <span class="icon-alert_2 pr-1"></span>

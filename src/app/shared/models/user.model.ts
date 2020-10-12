@@ -21,7 +21,7 @@ export class User {
     }
 
     get isTDEEInfoCompleted(): boolean {
-        return !!(this.profile?.age && this.profile?.gender && this.profile?.activityLevel && this.profile?.weight);
+        return !!(this.profile?.age && this.profile?.gender && this.profile?.activityLevel && this.profile?.weight && this.profile?.height);
     }
 
     public setProfile(profile: IUserProfile) {

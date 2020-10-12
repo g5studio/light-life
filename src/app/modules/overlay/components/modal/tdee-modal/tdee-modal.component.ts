@@ -26,6 +26,7 @@ export class TdeeModalComponent implements OnInit {
       user => {
         this.form.get('age').setValue(user.profile.age);
         this.form.get('weight').setValue(user.profile.weight);
+        this.form.get('height').setValue(user.profile.height);
         this.form.get('gender').setValue(user.profile.gender);
         this.form.get('activityLevel').setValue(user.profile.activityLevel);
       }
@@ -51,6 +52,7 @@ export class TdeeModalComponent implements OnInit {
       {
         age: ['', [Validators.required]],
         gender: ['', [Validators.required]],
+        height: ['', [Validators.required]],
         weight: ['', [Validators.required]],
         activityLevel: ['', [Validators.required]]
       }

@@ -1,0 +1,19 @@
+@import "variables";
+@import "mixins";
+
+.TdeeCard {
+  &::ng-deep {
+    color: $midnight;
+    h1 {
+      @include font-size(map-get($font-size, "xxl"));
+    }
+
+    p {
+      @include font-size(map-get($font-size, "lgx"));
+    }
+  }
+
+  &__Header {
+    margin-bottom: 1.5rem;
+  }
+}

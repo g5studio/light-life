@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OverlayService } from '@services/overlay.service';
-import { ProjectService } from '@services/project.service';
 import { UserService } from '@services/user.service';
 import { Gender, TrainExperience, TrainLevel } from '@utilities/enums/user.enum';
 import { filter, take } from 'rxjs/operators';
@@ -17,7 +16,6 @@ export class ProjectQuestionModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public $overlay: OverlayService,
-    private $project: ProjectService,
     private $user: UserService
   ) { }
 

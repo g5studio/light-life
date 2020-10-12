@@ -16,7 +16,7 @@
         </li>
         <li>
           <input placeholder="Weight" [class.is-invalid]="form.get('weight').invalid && form.get('weight').touched"
-            formControlName="weight" type="number" class="form-control" />
+            formControlName="weight(kg)" type="number" class="form-control" />
           <small *ngIf="form.get('weight').invalid && form.get('weight').touched">
             <span class="icon-alert_2 pr-1"></span>
             <span>field is required</span>
