@@ -1,35 +1,45 @@
-<div *ngIf = 'this.$project.tdee$ | async as tdee' class="TDEE">
+<div *ngIf='this.$project.tdee$ | async as tdee' class="TDEE">
   <div class="TDEE__Container">
     <span class="TDEE__Logo">
-        <app-logo></app-logo>
+      <app-logo></app-logo>
     </span>
-    <h1>My TDEE: {{tdee | number: '.0-0'}} <p>(Kcal)</p></h1>
-    <ul>
-      <li>
-        <app-tdee-card>
-          <h1 header>What is TDEE</h1>
-          <p body>
-            Total Daily Energy Expenditure (TDEE) is an estimation of how many calories you burn each day including
-            typical exercise.
-          </p>
-        </app-tdee-card>
-      </li>
-      <li>
-        <app-tdee-card>
-          <h1 header>Set TDEE to lose weight</h1>
-          <p body>
-            To lose fat, we typically recommend that using a caloric deficit of 20%.
-          </p>
-        </app-tdee-card>
-      </li>
-      <li>
-        <app-tdee-card>
-          <h1 header>Set TDEE to gain weight</h1>
-          <p body>
-            To build muscle and limit fat gain, you need to consume roughly 200-300 calories above your TDEE.
-          </p>
-        </app-tdee-card>
-      </li>
-    </ul>
+    <div class="TDEE__Main">
+      <div class="TDEE__Title">
+        <h1 class="mr-xl-4_2 mr-0">TDEE</h1>
+        <span>
+          <h1>{{tdee | number: '.0-0'}}</h1>
+          <p>(Kcal)</p>
+        </span>
+      </div>
+
+      <ul>
+        <li>
+          <app-tdee-card>
+            <h1 header>What is TDEE</h1>
+            <p body>
+              Total Daily Energy Expenditure (TDEE) is an estimation of how many calories you burn each day including
+              typical exercise.
+            </p>
+          </app-tdee-card>
+        </li>
+        <li>
+          <app-tdee-card>
+            <h1 header>Set TDEE to lose weight</h1>
+            <p body>
+              To lose fat, we typically recommend that using a caloric deficit of 20%.
+            </p>
+          </app-tdee-card>
+        </li>
+        <li>
+          <app-tdee-card>
+            <h1 header>Set TDEE to gain weight</h1>
+            <p body>
+              To build muscle and limit fat gain, you need to consume roughly 200-300 calories above your TDEE.
+            </p>
+          </app-tdee-card>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </div>
