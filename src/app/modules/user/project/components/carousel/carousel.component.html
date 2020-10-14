@@ -1,0 +1,20 @@
+<div class="Carousel">
+  <div class="Carousel__Container">
+    <div [class.slide]='this.sliding'>
+      <app-exercise-card [exercise]='this.exercises[current]'>
+      </app-exercise-card>
+    </div>
+    <div [class.slide]='this.sliding'>
+      <app-exercise-card [exercise]='this.exercises[next]'>
+      </app-exercise-card>
+    </div>
+  </div>
+  <div class="Carousel__Controller">
+    <ul>
+      <li *ngFor='let exercise of this.exercises; let index = index'>
+        <input [checked] = 'index === current' [name]="exercise" type="radio">
+        <label (click) = 'this.slide(index)' [for]="exercise"></label>
+      </li>
+    </ul>
+  </div>
+</div>

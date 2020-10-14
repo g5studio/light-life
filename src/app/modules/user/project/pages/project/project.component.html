@@ -5,8 +5,7 @@
     </span>
     <h1>Training Project</h1>
     <div class="Project__Exercises">
-      <app-exercise-card *ngFor="let exercise of exercises;let last = last" [last]="last" [exercise]='exercise'>
-      </app-exercise-card>
+      <app-carousel [exercises] = 'exercises'></app-carousel>
     </div>
   </div>
 </div>

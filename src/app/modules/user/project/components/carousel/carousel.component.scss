@@ -1,0 +1,75 @@
+@import "variables";
+@import "mixins";
+@import "animations";
+
+.Carousel {
+  &__Container {
+    @include g5-modal();
+    background-color: inherit;
+    border: none;
+    position: relative;
+    width: 18rem;
+    height: 20rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+
+    & > div {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      &:nth-child(2) {
+        visibility: hidden;
+        left: 18rem;
+      }
+    }
+  }
+
+  &__Controller {
+    margin-top: 1.5rem;
+    & > ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      & > li {
+        & > label {
+          cursor: pointer;
+          box-shadow: 0px 0px 3px 1px $white;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          border-radius: 100%;
+          background-color: inherit;
+          // border: 1px solid $white;
+        }
+
+        & > input {
+          display: none;
+          &:checked ~ label {
+            background-color: $white;
+          }
+        }
+
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.slide {
+  visibility: visible !important;
+  transform: translate(-18rem);
+  transition: 1s;
+}
+
+@media screen and (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
+  .Carousel {
+    &__Container {
+      width: calc(100vw - 5rem);
+    }
+  }
+}

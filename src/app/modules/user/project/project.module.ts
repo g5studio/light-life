@@ -5,12 +5,14 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './pages/project/project.component';
 import { SharedModule } from '@shared/shared.module';
 import { ExerciseCardComponent } from './components/exercise-card/exercise-card.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
   declarations: [
     ProjectComponent,
-    ExerciseCardComponent
+    ExerciseCardComponent,
+    CarouselComponent
   ],
   imports: [
     SharedModule,

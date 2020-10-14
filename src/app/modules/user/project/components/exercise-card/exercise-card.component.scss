@@ -7,7 +7,7 @@
   padding: 1.5rem;
   background-color: rgba($black, 0.3);
   border: none;
-  margin-right: 1.5rem;
+  // margin-right: 1.5rem;
   width: 18rem;
   height: 20rem;
 
@@ -16,6 +16,7 @@
     opacity: 0.8;
     text-align: center;
     white-space: pre-wrap;
+    margin-bottom: 0.5rem;
   }
   & > img {
     opacity: 0.5;
@@ -29,7 +30,7 @@
       transition: 0.5s;
     }
 
-    &> h1 {
+    & > h1 {
       opacity: 1;
       transition: 0.5s;
     }
@@ -38,4 +39,14 @@
 
 .last {
   margin: 0;
+}
+
+@media screen and (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
+  .Exercise {
+    width: 100%;
+    & > img {
+      width: 100%;
+      height: calc(100% - 2.5rem);
+    }
+  }
 }
