@@ -98,7 +98,7 @@ export abstract class TrainMenu {
 
     public getRandomExample(id: number) {
         const EXERCISE = this.youngExsercises[id];
-        return `example_${EXERCISE[this.getRandom(EXERCISE.length) - 1]}.png`
+        return EXERCISE[this.getRandom(EXERCISE.length) - 1];
     }
 
     public getRandom(x) {

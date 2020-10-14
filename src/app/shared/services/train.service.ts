@@ -37,10 +37,11 @@ export class TrainService extends TrainMenu {
       }
     } else {
       switch (profile.level) {
-        case TrainLevel.Level1: return this.cardios.map(cardio => `example_${cardio}.png`);
+        case TrainLevel.Level1: return this.cardios;
         case TrainLevel.Level2:
-          const EXERCISES = this.cardios.map(cardio => `example_${cardio}.png`);
-          EXERCISES.push(`example_${this.ews[this.getRandom(this.ews.length)]}.png`);
+          const EXERCISES = [];
+          EXERCISES.push(this.cardios)
+          EXERCISES.push(this.ews[this.getRandom(this.ews.length)]);
           return EXERCISES;
       }
     }

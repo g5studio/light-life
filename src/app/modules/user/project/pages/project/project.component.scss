@@ -28,12 +28,25 @@
     flex-direction: column;
     // justify-content: center;
     align-items: center;
+    & > h1 {
+      @include font-size('xxxl');
+      width: 100%;
+      text-align: center;
+    }
+    padding-top: 3rem;
   }
 
   &__Logo {
     position: absolute;
     bottom: 3rem;
     right: 3rem;
+  }
+
+  &__Exercises {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 3rem;
   }
 }
 
@@ -56,6 +69,11 @@
     &__Container {
       padding: 0 2.5rem;
       align-items: flex-start;
+      padding-top: 10rem;
+
+      & > h1 {
+        @include font-size('xxl')
+      }
     }
   }
 }

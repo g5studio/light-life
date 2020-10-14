@@ -1,3 +1,4 @@
-<div class="Exercise">
-  <img [src]="'assets/images/examples/' + this.url" alt="">
+<div class="Exercise" [class.last] = 'this.last'>
+  <h1>{{this.name}}</h1>
+  <img [src]="this.url" alt="">
 </div>

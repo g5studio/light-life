@@ -7,12 +7,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExerciseCardComponent implements OnInit {
 
-  @Input() url: string;
-
+  @Input() last: boolean;
+  @Input() exercise: string;
   constructor() { }
 
   ngOnInit(): void {
     
+  }
+
+  get url() {
+    return `assets/images/examples/example_${this.exercise}.png`;
+  }
+
+  get name() {
+    return this.exercise.replace(/_/g, ' ')
   }
 
 }

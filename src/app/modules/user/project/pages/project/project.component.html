@@ -3,8 +3,10 @@
     <span class="Project__Logo">
       <app-logo></app-logo>
     </span>
+    <h1>Training Project</h1>
     <div class="Project__Exercises">
-      <app-exercise-card *ngFor="let exercise of exercises" [url]='exercise'></app-exercise-card>
+      <app-exercise-card *ngFor="let exercise of exercises;let last = last" [last]="last" [exercise]='exercise'>
+      </app-exercise-card>
     </div>
   </div>
 </div>
