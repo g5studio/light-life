@@ -35,23 +35,26 @@ export class CarouselComponent implements OnInit {
   }
 
   public slide(index?: number) {
-    if(index !== undefined) {
-      this.specify = index;
-    }
-    this.sliding = true;
-    setTimeout(_ => {
-      this.sliding = false;
-      if (index === undefined) {
-        this.current = this.current + 1 > this.exercises.length - 1 ? 0 : this.current + 1;
-      } else {
-        this.current = this.specify;
-        this.specify = undefined;
+    if (this.exercises.length > 1) {
+      if (index !== undefined) {
+        this.specify = index;
       }
-    }, 1000);
+      this.sliding = true;
+      setTimeout(_ => {
+        this.sliding = false;
+        if (index === undefined) {
+          this.current = this.current + 1 > this.exercises.length - 1 ? 0 : this.current + 1;
+        } else {
+          this.current = this.specify;
+          this.specify = undefined;
+        }
+      }, 1000);
+    }
   }
 
   private initial() {
-    this.interval = setInterval(_ => this.slide(), 3000);
+    if (this.exercises.length > 1) {
+      this.interval = setInterval(_ => this.slide(), 3000);
+    }
   }
-
 }
