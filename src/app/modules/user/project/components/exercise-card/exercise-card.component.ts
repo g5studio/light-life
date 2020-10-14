@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercise-card',
@@ -9,10 +10,12 @@ export class ExerciseCardComponent implements OnInit {
 
   @Input() last: boolean;
   @Input() exercise: string;
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    
+
   }
 
   get url() {
@@ -20,7 +23,11 @@ export class ExerciseCardComponent implements OnInit {
   }
 
   get name() {
-    return this.exercise.replace(/_/g, ' ')
+    return this.exercise?.replace(/_/g, ' ')
+  }
+
+  public navigate() {
+    this.router.navigate(['/user/project/exercise', this.exercise])
   }
 
 }

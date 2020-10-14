@@ -1,0 +1,21 @@
+<div *ngIf="this.$user.user$ | async as user" class="Exercise">
+  <span class="Exercise__Logo">
+    <app-logo></app-logo>
+  </span>
+  <h1>
+    <em (click)="this.router.navigate(['/user/project'])" class="icon-back g5-font-dark-gray-blue-xxl"></em>
+    {{this.name}}
+  </h1>
+  <div class="Exercise__Container">
+    <div class="Exercise__Image">
+      <img [src]="this.url" alt="">
+    </div>
+    <div class="Exercise__Introduction">
+      <p *ngIf='!this.isCardio'>10 reps for 4 sets</p>
+      <p *ngIf='this.isCardio'>45 minutes for 4 sets</p>
+      <p *ngIf='this.isEw'>
+        suggested weight: {{this.getSuggestedWeight(user) | number: '.0-0'}} (kg)
+      </p>
+    </div>
+  </div>
+</div>

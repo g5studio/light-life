@@ -48,8 +48,8 @@ export enum TricepExercise {
 export enum Cardio {
     Swiming = 'swiming',
     Biking = 'biking',
-    Sliding = 'sliding machine',
-    Step = 'step machine'
+    Sliding = 'sliding_machine',
+    Step = 'step_machine'
 }
 
 export enum EW {

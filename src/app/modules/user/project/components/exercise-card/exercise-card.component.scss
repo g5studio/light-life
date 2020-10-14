@@ -12,6 +12,7 @@
   height: 20rem;
 
   & > h1 {
+    @include g5-outrange-hidden();
     font-weight: 300;
     opacity: 0.8;
     text-align: center;
