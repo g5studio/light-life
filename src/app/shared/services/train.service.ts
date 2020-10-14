@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IUserProfile } from '@shared/interfaces/user.interface';
+import { TrainMenu } from '@utilities/abstract/trainMenu.abstract';
+import { ChestExercise } from '@utilities/enums/training.enum';
 import { ActivityLevel, Gender, TrainLevel } from '@utilities/enums/user.enum';
 import { filter, map, take, tap } from 'rxjs/operators';
 import { UserService } from './user.service';
@@ -7,12 +9,12 @@ import { UserService } from './user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TrainService {
+export class TrainService extends TrainMenu {
 
   constructor(
     private $user: UserService
   ) {
-
+    super();
   }
 
   public trainingProject$ = this.$user.user$.pipe(
@@ -28,17 +30,36 @@ export class TrainService {
   )
 
   private settingProject(profile: IUserProfile) {
-    if (profile.age > 60) {
+    if (profile.age < 60) {
       switch (profile.level) {
-        case TrainLevel.Level1: return '6個動作選1個';
-        case TrainLevel.Level2: return '6個動作選2個';
+        case TrainLevel.Level1: return this.getExsercise();
+        case TrainLevel.Level2: return this.getTwoExsercises();
       }
     } else {
       switch (profile.level) {
-        case TrainLevel.Level1: return 'cardio 45 mins';
-        case TrainLevel.Level2: return 'cardio 30 mins or EW';
+        case TrainLevel.Level1: return this.cardios.map(cardio => `example_${cardio}.png`);
+        case TrainLevel.Level2:
+          const EXERCISES = this.cardios.map(cardio => `example_${cardio}.png`);
+          EXERCISES.push(`example_${this.ews[this.getRandom(this.ews.length)]}.png`);
+          return EXERCISES;
       }
     }
+  }
+
+  private getTwoExsercises() {
+    let exerciseOne = 0, exerciseTwo = 0;
+    while (exerciseOne === exerciseTwo || exerciseOne === 0 || exerciseTwo === 0) {
+      if (exerciseOne === 0) {
+        exerciseOne = this.getRandom(this.youngExsercises.length)
+      } else {
+        exerciseTwo = this.getRandom(this.youngExsercises.length);
+      }
+    }
+    return [this.getRandomExample(exerciseOne - 1), this.getRandomExample(exerciseTwo - 1)];
+  }
+
+  private getExsercise() {
+    return [this.getRandomExample(this.getRandom(this.youngExsercises.length))];
   }
 
   private calculateTDEE(profile: IUserProfile) {
@@ -63,4 +84,6 @@ export class TrainService {
       case ActivityLevel.Extremely: return 1.9;
     }
   }
+
+
 }

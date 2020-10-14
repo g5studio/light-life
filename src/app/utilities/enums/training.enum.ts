@@ -1,48 +1,48 @@
 export enum ChestExercise {
-    DumbbellBenchPress = 'Dumbbell bench press',
-    BarbellBenchPress = 'barbell bench press',
-    InclineDumbbellBenchPress = 'Incline Dumbbell bench press',
-    DeclineDumbbellBenchPress = 'decline Dumbbell bench press',
-    InclineBarbellBenchPress = 'Incline barbell bench press',
-    DeclineBarbellBenchPress = 'decline barbell bench press',
-    CableFly = 'Cable fly'
+    DumbbellBenchPress = 'Dumbbell_bench_press',
+    BarbellBenchPress = 'barbell_bench_press',
+    InclineDumbbellBenchPress = 'Incline_Dumbbell_bench_press',
+    DeclineDumbbellBenchPress = 'decline_Dumbbell_bench_press',
+    InclineBarbellBenchPress = 'Incline_barbell_bench_press',
+    DeclineBarbellBenchPress = 'decline_barbell_bench_press',
+    CableFly = 'Cable_fly'
 }
 
 export enum ShoulderExercise {
-    DumbbellShoulderPress = 'Dumbbell shoulder press',
-    BarbellShoulderPress = 'barbell shoulder press',
-    SideDumbbellLateralRaise = 'Side Dumbbell lateral raise',
-    FrontDeltDumbbellFly = 'Front delt Dumbbell fly',
-    RearDeltDumbbellFly = 'Rear delt Dumbbell fly',
+    DumbbellShoulderPress = 'Dumbbell_shoulder_press',
+    BarbellShoulderPress = 'barbell_shoulder_press',
+    SideDumbbellLateralRaise = 'Side_Dumbbell_lateral_raise',
+    FrontDeltDumbbellFly = 'Front_delt_Dumbbell_fly',
+    RearDeltDumbbellFly = 'Rear_delt_Dumbbell_fly',
 }
 
 export enum BackExercise {
-    LatPulldown = 'Lat pulldown',
-    SeatedRowMachine = 'Seated row machine',
-    PullUps = 'Pull ups',
+    LatPulldown = 'Lat_pulldown',
+    SeatedRowMachine = 'Seated_row_machine',
+    PullUps = 'Pull_ups',
     Shrugs = 'Shrugs',
 }
 
 export enum LegExercise {
     Squads = 'Squads',
-    LegPress = 'Leg press',
-    LegExtension = 'Leg extension',
-    LegCurl = 'Leg curl',
-    DeadLifts = 'Dead lifts'
+    LegPress = 'Leg_press',
+    LegExtension = 'Leg_extension',
+    LegCurl = 'Leg_curl',
+    DeadLifts = 'Dead_lifts'
 }
 
 export enum BicepsExercise {
-    BarbellCurls = 'Barbell curls',
-    HammerCurls = 'Hammer curls',
-    DumbbellCurls = 'dumbbell curls',
-    PreacherCurls = 'Preacher curls',
-    ConcentrationCurls = 'Concentration curls'
+    BarbellCurls = 'Barbell_curls',
+    HammerCurls = 'Hammer_curls',
+    DumbbellCurls = 'dumbbell_curls',
+    PreacherCurls = 'Preacher_curls',
+    ConcentrationCurls = 'Concentration_curls'
 }
 
 export enum TricepExercise {
-    TricepCablePushdown = 'Tricep cable pushdown',
-    BenchDips = 'Bench dips',
-    TricepKickbacks = 'Tricep kickbacks'
+    TricepCablePushdown = 'Tricep_cable_pushdown',
+    BenchDips = 'Bench_dips',
+    TricepKickbacks = 'Tricep_kickbacks'
 }
 
 export enum Cardio {
@@ -53,7 +53,7 @@ export enum Cardio {
 }
 
 export enum EW {
-    ChestPress = 'Chest press machine',
-    ShoulderPressMachine = 'shoulder press machine',
-    LegPress = 'Leg press'
+    ChestPress = 'Chest_press_machine',
+    ShoulderPressMachine = 'shoulder_press_machine',
+    LegPress = 'Leg_press'
 }

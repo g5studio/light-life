@@ -1,7 +1,10 @@
-<div class="Project">
-    <div class="Project__Container">
-        <span class="Project__Logo">
-            <app-logo></app-logo>
-        </span>
+<div *ngIf="this.$project.trainingProject$ | async as exercises" class="Project">
+  <div class="Project__Container">
+    <span class="Project__Logo">
+      <app-logo></app-logo>
+    </span>
+    <div class="Project__Exercises">
+      <app-exercise-card *ngFor="let exercise of exercises" [url]='exercise'></app-exercise-card>
     </div>
+  </div>
 </div>

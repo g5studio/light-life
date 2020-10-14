@@ -9,15 +9,10 @@ import { TrainService } from '@services/train.service';
 export class ProjectComponent implements OnInit {
 
   constructor(
-    private $project: TrainService
+    public $project: TrainService
   ) { }
 
   ngOnInit(): void {
-    this.$project.trainingProject$.subscribe(
-      _ => {
-        console.log(_)
-      }
-    )
   }
 
 }
