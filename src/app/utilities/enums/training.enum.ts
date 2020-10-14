@@ -11,7 +11,7 @@ export enum ChestExercise {
 export enum ShoulderExercise {
     DumbbellShoulderPress = 'Dumbbell_shoulder_press',
     BarbellShoulderPress = 'barbell_shoulder_press',
-    SideDumbbellLateralRaise = 'Side_Dumbbell_lateral_raise',
+    SideDumbbellLateralRaise = 'side_dumbbell_lateral_raise',
     FrontDeltDumbbellFly = 'Front_delt_Dumbbell_fly',
     RearDeltDumbbellFly = 'Rear_delt_Dumbbell_fly',
 }

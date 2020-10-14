@@ -12,7 +12,7 @@ export class ExerciseCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.url)
+    
   }
 
 }
