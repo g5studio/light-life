@@ -39,10 +39,10 @@ export class TrainService extends TrainMenu {
       switch (profile.level) {
         case TrainLevel.Level1: return this.cardios;
         case TrainLevel.Level2:
-          const EXERCISES = [];
-          EXERCISES.push(this.cardios)
-          EXERCISES.push(this.ews[this.getRandom(this.ews.length)]);
-          return EXERCISES;
+          let exercise = [];
+          exercise =this.cardios;
+          exercise.push(this.ews[this.getRandom(this.ews.length)]);
+          return exercise;
       }
     }
   }

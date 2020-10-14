@@ -15,9 +15,10 @@ export class CarouselComponent implements OnInit {
   public sliding = false;
 
   private interval: any;
+  private specify: number;
 
   get next() {
-    const NEXT = this.current + 1;
+    const NEXT = this.specify === undefined ? this.current + 1 : this.specify;
     return NEXT > this.exercises.length - 1 ? 0 : NEXT;
   }
 
@@ -26,29 +27,31 @@ export class CarouselComponent implements OnInit {
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.interval = setInterval(
-      _ => this.slide(this.current + 1 > this.exercises.length - 1 ? 0 : this.current + 1),
-      3800
-    );
+    this.initial();
   }
 
   ngOnInit(): void {
-    this.inital();
+    this.initial();
   }
 
-  public slide(index: number) {
+  public slide(index?: number) {
+    if(index !== undefined) {
+      this.specify = index;
+    }
     this.sliding = true;
     setTimeout(_ => {
       this.sliding = false;
-      this.current = index;
+      if (index === undefined) {
+        this.current = this.current + 1 > this.exercises.length - 1 ? 0 : this.current + 1;
+      } else {
+        this.current = this.specify;
+        this.specify = undefined;
+      }
     }, 1000);
   }
 
-  private inital() {
-    this.interval = setInterval(
-      _ => this.slide(this.current + 1 > this.exercises.length - 1 ? 0 : this.current + 1),
-      3000
-    )
+  private initial() {
+    this.interval = setInterval(_ => this.slide(), 3000);
   }
 
 }
