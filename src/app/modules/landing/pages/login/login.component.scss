@@ -11,7 +11,7 @@
     position: relative;
     img {
         margin-top: 5rem;
-        width: 45rem;
+        width: 25rem;
     }
     &__Container {
         width: 20rem;
@@ -68,6 +68,13 @@
         bottom: 3rem;
         right: 3rem;
     }
+
+    &__Buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 @media screen and (max-width: map-get($grid-breakpoints, "md")) {
@@ -89,6 +96,9 @@
             app-button {
                 padding-left: 0rem;
                 width: 100%;
+                &:first-child {
+                    margin-bottom: 1rem;
+                }
             }
         }
 
@@ -103,6 +113,10 @@
             top: 3rem;
             left: 50%;
             transform: translate(-50%);
+        }
+
+        &__Buttons {
+            flex-direction: column;
         }
     }
 }
