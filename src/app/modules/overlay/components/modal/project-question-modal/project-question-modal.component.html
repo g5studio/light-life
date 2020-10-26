@@ -4,6 +4,11 @@
       <em class="icon-close"></em>
     </span>
     <h1>FITNESS PROJECT</h1>
+    <div *ngIf="this.heartRhythm$ | async as heartRhythm" class="ProjectQuestion__Heart" [class.up]="this.isUp" [class.down]="!this.isUp">
+      <img src="assets/images/heart_rhythm.png" alt="">
+      <p>{{heartRhythm || 100}}</p>
+      <em class="icon-{{this.isUp ? 'up1' : 'down'}}"></em>
+    </div>
     <div class="ProjectQuestion__Forms" [formGroup]="this.form">
       <ul>
         <li>
@@ -15,8 +20,8 @@
           </small>
         </li>
         <li>
-          <input placeholder="Weight" [class.is-invalid]="form.get('weight').invalid && form.get('weight').touched"
-            formControlName="weight(kg)" type="number" class="form-control" />
+          <input placeholder="Weight (kg)" [class.is-invalid]="form.get('weight').invalid && form.get('weight').touched"
+            formControlName="weight" type="number" class="form-control" />
           <small *ngIf="form.get('weight').invalid && form.get('weight').touched">
             <span class="icon-alert_2 pr-1"></span>
             <span>field is required</span>

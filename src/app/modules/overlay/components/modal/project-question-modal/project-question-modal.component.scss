@@ -10,14 +10,30 @@
   align-items: center;
 
   h1 {
-    @include font-size('xl');
+    @include font-size("xl");
     margin-bottom: 1.5rem;
     text-align: center;
   }
 
+  &__Heart {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 2.5rem;
+      margin-right: 1rem;
+    }
+
+    p {
+      @include font-size("lg");
+    }
+  }
+
   &__Submit {
     width: 5rem;
-   float: right;
+    float: right;
   }
 
   &__Container {
@@ -64,7 +80,23 @@
   }
 }
 
-@media screen and (max-width: map-get($map: $grid-breakpoints, $key: 'md')) {
+.up {
+  color: $green-2;
+  em {
+    cursor: auto;
+    color: $green-2;
+  }
+}
+
+.down {
+  color: $red-1;
+  em {
+    cursor: auto;
+    color: $red-1;
+  }
+}
+
+@media screen and (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
   .ProjectQuestion {
     width: 100vw;
 

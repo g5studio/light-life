@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { OverlayService } from '@services/overlay.service';
 import { UserService } from '@services/user.service';
 import { Gender, TrainExperience, TrainLevel } from '@utilities/enums/user.enum';
-import { filter, take } from 'rxjs/operators';
+import { Subject, timer } from 'rxjs';
+import { filter, map, mergeMap, startWith, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-question-modal',
@@ -24,6 +25,19 @@ export class ProjectQuestionModalComponent implements OnInit {
   public experiences = [TrainExperience.Junior, TrainExperience.Senior];
   public levels = [TrainLevel.Level1, TrainLevel.Level2]
 
+  public isUp = false;
+
+  private heartRhythm: Subject<number> = new Subject();
+  public heartRhythm$ = this.heartRhythm.asObservable().pipe(
+    startWith(100),
+    mergeMap(_ => timer(1500), (current, _) => current),
+    map((current) => {
+      const NEW = Math.floor(Math.random() * (120 - 90 + 1)) + 90;
+      this.isUp = NEW >= current;
+      this.heartRhythm.next(NEW);
+      return NEW;
+    })
+  )
 
   ngOnInit(): void {
     this.inital();
