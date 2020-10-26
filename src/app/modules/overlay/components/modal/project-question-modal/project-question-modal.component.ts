@@ -25,7 +25,7 @@ export class ProjectQuestionModalComponent extends UnsubOndestroy implements OnI
   public form: FormGroup;
   public genders = [Gender.Male, Gender.Female];
   public experiences = [TrainExperience.Junior, TrainExperience.Senior];
-  public levels = [TrainLevel.Level1, TrainLevel.Level2]
+  public levels = [TrainLevel.Level1, TrainLevel.Level2];
 
   public isUp;
 
