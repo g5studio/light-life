@@ -1,43 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { OverlayService } from '@services/overlay.service';
 import { UserService } from '@services/user.service';
+import { UnsubOndestroy } from '@utilities/abstract/unsub-ondestory';
 import { Gender, TrainExperience, TrainLevel } from '@utilities/enums/user.enum';
-import { Subject, timer } from 'rxjs';
-import { filter, map, mergeMap, startWith, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
+import { ReplaySubject, Subject, timer } from 'rxjs';
+import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-question-modal',
   templateUrl: './project-question-modal.component.html',
   styleUrls: ['./project-question-modal.component.scss']
 })
-export class ProjectQuestionModalComponent implements OnInit {
+export class ProjectQuestionModalComponent extends UnsubOndestroy implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
     public $overlay: OverlayService,
     private $user: UserService
-  ) { }
+  ) {
+    super();
+  }
 
   public form: FormGroup;
   public genders = [Gender.Male, Gender.Female];
   public experiences = [TrainExperience.Junior, TrainExperience.Senior];
   public levels = [TrainLevel.Level1, TrainLevel.Level2]
 
-  public isUp = false;
+  public isUp;
 
   private heartRhythm: Subject<number> = new Subject();
   public heartRhythm$ = this.heartRhythm.asObservable().pipe(
     startWith(100),
-    mergeMap(_ => timer(1500), (current, _) => current),
-    map((current) => {
-      const NEW = Math.floor(Math.random() * (120 - 90 + 1)) + 90;
-      this.isUp = NEW >= current;
-      this.heartRhythm.next(NEW);
-      return NEW;
+    map(current => {
+      this.randomHeartRhythm.next(current);
+      return current;
     })
-  )
+  );
+
+  private randomHeartRhythm = new ReplaySubject();
+  private randomHeartRhythm$ = this.randomHeartRhythm.asObservable().pipe(
+    map(current => {
+      setTimeout(
+        _ => this.randomRhythm(current),
+        1500
+      );
+    }),
+    takeUntil(this.onDestroy$)
+  );
 
   ngOnInit(): void {
     this.inital();
@@ -74,6 +84,7 @@ export class ProjectQuestionModalComponent implements OnInit {
   }
 
   private inital() {
+    this.randomHeartRhythm$.subscribe();
     this.form = this.formBuilder.group(
       {
         age: ['', [Validators.required]],
@@ -83,7 +94,14 @@ export class ProjectQuestionModalComponent implements OnInit {
         level: ['', [Validators.required]],
         vegetarian: ['', [Validators.required]]
       }
-    )
+    );
+  }
+
+  private randomRhythm(current) {
+    const NEW = Math.floor(Math.random() * (120 - 90 + 1)) + 90;
+    this.isUp = NEW >= current;
+    this.heartRhythm.next(NEW);
+    return NEW;
   }
 
 }

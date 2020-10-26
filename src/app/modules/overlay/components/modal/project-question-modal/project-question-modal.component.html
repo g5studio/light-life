@@ -4,10 +4,11 @@
       <em class="icon-close"></em>
     </span>
     <h1>FITNESS PROJECT</h1>
-    <div *ngIf="this.heartRhythm$ | async as heartRhythm" class="ProjectQuestion__Heart" [class.up]="this.isUp" [class.down]="!this.isUp">
+    <div *ngIf="this.heartRhythm$ | async as heartRhythm" class="ProjectQuestion__Heart" [class.up]="this.isUp"
+      [class.down]="this.isUp === undefined ? false : !this.isUp">
       <img src="assets/images/heart_rhythm.png" alt="">
       <p>{{heartRhythm || 100}}</p>
-      <em class="icon-{{this.isUp ? 'up1' : 'down'}}"></em>
+      <em class="icon-{{this.isUp === undefined ? '' : this.isUp ? 'up1' : 'down'}}"></em>
     </div>
     <div class="ProjectQuestion__Forms" [formGroup]="this.form">
       <ul>
