@@ -43,7 +43,7 @@ export class ProjectQuestionModalComponent extends UnsubOndestroy implements OnI
     map(current => {
       setTimeout(
         _ => this.randomRhythm(current),
-        1500
+        60000
       );
     }),
     takeUntil(this.onDestroy$)

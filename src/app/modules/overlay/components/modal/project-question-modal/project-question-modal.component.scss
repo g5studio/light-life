@@ -26,8 +26,24 @@
       margin-right: 1rem;
     }
 
+    @include font-size("xs");
+    color: $gray;
+
     p {
+      color: $midnight;
+      @include font-size("xl");
+      margin-right: 0.25rem;
+    }
+
+    em {
+      cursor: auto;
       @include font-size("lg");
+    }
+
+    span {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
     }
   }
 
@@ -81,18 +97,24 @@
 }
 
 .up {
-  color: $green-2;
-  em {
-    cursor: auto;
+  p {
     color: $green-2;
+    margin-right: 0;
+  }
+  em {
+    color: $green-2;
+    margin-right: 0.25rem;
   }
 }
 
 .down {
-  color: $red-1;
-  em {
-    cursor: auto;
+  p {
     color: $red-1;
+    margin-right: 0;
+  }
+  em {
+    color: $red-1;
+    margin-right: 0.25rem;
   }
 }
 

@@ -7,8 +7,11 @@
     <div *ngIf="this.heartRhythm$ | async as heartRhythm" class="ProjectQuestion__Heart" [class.up]="this.isUp"
       [class.down]="this.isUp === undefined ? false : !this.isUp">
       <img src="assets/images/heart_rhythm.png" alt="">
-      <p>{{heartRhythm || 100}}</p>
-      <em class="icon-{{this.isUp === undefined ? '' : this.isUp ? 'up1' : 'down'}}"></em>
+      <span>
+        <p>{{heartRhythm || 100}}</p>
+        <em class="icon-{{this.isUp === undefined ? '' : this.isUp ? 'up1' : 'down'}}"></em>
+        (bpm)
+      </span>
     </div>
     <div class="ProjectQuestion__Forms" [formGroup]="this.form">
       <ul>
