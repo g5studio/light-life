@@ -12,9 +12,9 @@
       (bpm)
     </span>
     <p class="mb-md-0 mb-4 w-100 text-center">
-      Recommand Range:
-      {{this.$user.getRecommandHeartRate(user.profile.gender, user.profile.age).maxRate | number: '.0-0'}} ~
-      {{this.$user.getRecommandHeartRate(user.profile.gender, user.profile.age).minRate | number: '.0-0'}} (bpm)
+      Recommend Range:
+      {{this.$user.getRecommendHeartRate(user.profile.gender, user.profile.age).maxRate | number: '.0-0'}} ~
+      {{this.$user.getRecommendHeartRate(user.profile.gender, user.profile.age).minRate | number: '.0-0'}} (bpm)
     </p>
     <div class="Project__Exercises">
       <app-carousel [exercises]='exercises'></app-carousel>

@@ -24,7 +24,7 @@ export class UserService {
     // tap(_ => console.log(_)),
   );
 
-  public getRecommandHeartRate(gender: Gender, age: number): IHeartRateRange {
+  public getRecommendHeartRate(gender: Gender, age: number): IHeartRateRange {
     const Max = gender === Gender.Male ? 205 - age : 220 - age;
     return {
       maxRate: Max * 0.85,
