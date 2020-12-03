@@ -11,7 +11,7 @@
     position: relative;
     img {
         margin-top: 5rem;
-        width: 45rem;
+        width: 25rem;
     }
     &__Container {
         width: 20rem;
@@ -81,6 +81,7 @@
         }
 
         &__Container {
+            padding: 0rem;
             h1 {
                 @include font-size("xxl");
                 margin-bottom: 1.5rem;

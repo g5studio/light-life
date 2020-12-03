@@ -5,7 +5,8 @@ import { FirebaseService } from '@services/firebase.service';
 import { take, tap } from 'rxjs/operators';
 import { OverlayService } from './overlay.service';
 import { Router } from '@angular/router';
-import { IUserProfile } from '@shared/interfaces/user.interface';
+import { IHeartRateRange, IUserProfile } from '@shared/interfaces/user.interface';
+import { Gender } from '@utilities/enums/user.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,14 @@ export class UserService {
     // tap(_ => console.log(_)),
   );
 
+  public getRecommandHeartRate(gender: Gender, age: number): IHeartRateRange {
+    const Max = gender === Gender.Male ? 205 - age : 220 - age;
+    return {
+      maxRate: Max * 0.85,
+      minRate: Max * 0.6
+    }
+  }
+
   public inital(user: User) {
     this.user.next(user);
   }
@@ -33,13 +42,13 @@ export class UserService {
       take(1)
     ).subscribe(
       user => {
-        this.$fb.document('user', user.uid).set({profile: profile}).then(
+        this.$fb.document('user', user.uid).set({ profile: profile }).then(
           _ => {
             this.$overlay.finishLoading();
             user.setProfile(profile);
             this.user.next(user);
             this.$overlay.closeModal();
-            if(redirect) {
+            if (redirect) {
               this.router.navigate([redirect]);
             }
           }

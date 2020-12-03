@@ -1,11 +1,23 @@
 <div *ngIf="this.$project.trainingProject$ | async as exercises" class="Project">
-  <div class="Project__Container">
+  <div *ngIf="this.$user.user$ | async as user" class="Project__Container">
     <span class="Project__Logo">
       <app-logo></app-logo>
     </span>
-    <h1>Training Project</h1>
+    <h1 class="mb-md-3 mb-2">Training Project</h1>
+    <span *ngIf="this.heartRhythm$ | async as heartRhythm" class="w-100" [class.up]="this.isUp"
+      [class.down]="this.isUp === undefined ? false : !this.isUp">
+      <h2 class="mr-1">Current Heart Rate: </h2>
+      <p>{{heartRhythm || 100}}</p>
+      <em class="icon-{{this.isUp === undefined ? '' : this.isUp ? 'up1' : 'down'}}"></em>
+      (bpm)
+    </span>
+    <p class="mb-md-0 mb-4 w-100 text-center">
+      Recommand Range:
+      {{this.$user.getRecommandHeartRate(user.profile.gender, user.profile.age).maxRate | number: '.0-0'}} ~
+      {{this.$user.getRecommandHeartRate(user.profile.gender, user.profile.age).minRate | number: '.0-0'}} (bpm)
+    </p>
     <div class="Project__Exercises">
-      <app-carousel [exercises] = 'exercises'></app-carousel>
+      <app-carousel [exercises]='exercises'></app-carousel>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OverlayService } from '@services/overlay.service';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private $auth: AuthService,
-    public $overlay: OverlayService
+    public $overlay: OverlayService,
+    public router: Router
   ) { }
 
   public form: FormGroup;

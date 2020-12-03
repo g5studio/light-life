@@ -74,7 +74,10 @@ export class AuthService {
   private loginCallback(user: firebase.User) {
     sessionStorage.setItem('uid', user.uid);
     this.$idle.startWatching()
-    this.$idle.onTimeout().subscribe(_ => this.logout());
+    this.$idle.onTimeout().subscribe(_ => {
+      this.logout();
+      this.$idle.stopWatching();
+    });
     this.initalUser(user);
   }
 

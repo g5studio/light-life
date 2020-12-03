@@ -10,3 +10,8 @@ export interface IUserProfile {
     vegetarian?: boolean,
     activityLevel?: ActivityLevel
 }
+
+export interface IHeartRateRange {
+    maxRate: number,
+    minRate: number
+}
