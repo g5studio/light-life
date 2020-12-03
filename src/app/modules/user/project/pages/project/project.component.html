@@ -4,8 +4,10 @@
       <app-logo></app-logo>
     </span>
     <h1 class="mb-md-3 mb-2">Training Project</h1>
-    <span *ngIf="this.heartRhythm$ | async as heartRhythm" class="w-100">
-      <h2 class="mr-1">Current Heart Rate: {{heartRhythm || 100}}</h2>
+    <span *ngIf="this.heartRhythm$ | async as heartRhythm" class="w-100" [class.up]="this.isUp"
+      [class.down]="this.isUp === undefined ? false : !this.isUp">
+      <h2 class="mr-1">Current Heart Rate: </h2>
+      <p>{{heartRhythm || 100}}</p>
       <em class="icon-{{this.isUp === undefined ? '' : this.isUp ? 'up1' : 'down'}}"></em>
       (bpm)
     </span>
